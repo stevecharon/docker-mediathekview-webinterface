@@ -18,19 +18,19 @@ echo 'deb http://archive.ubuntu.com/ubuntu trusty-updates main universe restrict
   echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && \
   add-apt-repository -y ppa:webupd8team/java && \
   apt-get update
-  apt-get install -y oracle-java8-installer
+RUN  apt-get install -y oracle-java8-installer
 
 # update apt and install dependencies
-apt-get install -qy vlc
+RUN apt-get install -qy vlc
 # vlc \
-apt-get install -qy flvstreamer
-apt-get install -qy ffmpeg
-apt-get install -qy mplayer
+RUN apt-get install -qy flvstreamer
+RUN apt-get install -qy ffmpeg
+RUN apt-get install -qy mplayer
 
 # download Mediathekview
 # 
 # wget http://heanet.dl.sourceforge.net/project/zdfmediathk/Mediathek/Mediathek%2011/MediathekView_11.zip -P /opt/ && \
-wget https://download.mediathekview.de/stabil/MediathekView-latest.zip -P /opt/
-unzip /opt/MediathekView-latest.zip -d /opt/
+RUN wget https://download.mediathekview.de/stabil/MediathekView-latest.zip -P /opt/
+RUN unzip /opt/MediathekView-latest.zip -d /opt/
 
 ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
