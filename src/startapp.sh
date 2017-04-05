@@ -1,3 +1,3 @@
 #!/bin/bash
-/opt/MediathekView__Linux.sh
+/opt/MediathekView.sh
 
