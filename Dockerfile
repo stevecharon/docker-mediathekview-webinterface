@@ -26,7 +26,7 @@ RUN apt-get install -qy vlc
 RUN apt-get install -qy flvstreamer
 RUN add-apt-repository -y ppa:mc3man/trusty-media
 RUN apt-get update
-RUN apt-get dist-upgrade
+# RUN apt-get dist-upgrade
 RUN apt-get install ffmpeg
 # RUN apt-get install -qy ffmpeg
 RUN apt-get install -qy mplayer
