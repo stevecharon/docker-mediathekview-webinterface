@@ -24,7 +24,7 @@ RUN  apt-get install -y oracle-java8-installer
 RUN apt-get install -qy vlc
 # vlc \
 RUN apt-get install -qy flvstreamer
-RUN apt-get install -qy ffmpeg
+# RUN apt-get install -qy ffmpeg
 RUN apt-get install -qy mplayer
 
 # download Mediathekview
