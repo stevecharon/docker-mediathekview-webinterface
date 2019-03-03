@@ -9,6 +9,6 @@ services:
     volumes:
       - "$HOME/.mediathek3:/config:rw"
       - "$HOME/MediathekView:/output:rw"
-    # environment:
-    #   - "UID=998"
-    #   - "GID=998"
+    environment:
+       - "UID=1000"
+       - "GID=1000"

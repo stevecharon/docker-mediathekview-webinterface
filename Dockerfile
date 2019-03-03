@@ -1,7 +1,7 @@
 # Pull base image.
 FROM jlesage/baseimage-gui:debian-9
 
-ENV USER_ID=0 GROUP_ID=0 TERM=xterm
+ENV UID=0 GID=0 TERM=xterm
 
 # Define software download URLs.
 ARG MEDIATHEKVIEW_URL=https://download.mediathekview.de/stabil/MediathekView-latest.zip
