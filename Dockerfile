@@ -16,7 +16,13 @@ RUN mkdir -p /usr/share/man/man1
 RUN apt-get update
 RUN apt-get upgrade -y
 # Build deps
-RUN apt-get install -y apt-utils unzip
+RUN apt-get install -y apt-utils unzip locales
+RUN echo en_US.UTF-8 UTF-8 > /etc/locale.gen
+RUN locale-gen
+
+ENV LC_ALL en_US.UTF-8
+ENV LANGUAGE en_US.UTF-8
+ENV LANG en_US.UTF-8
 # Run deps
 RUN \
     apt-get install -y \
