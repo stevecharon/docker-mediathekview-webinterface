@@ -1,40 +1,59 @@
-FROM hurricane/dockergui:x11rdp
+# Pull base image.
+FROM jlesage/baseimage-gui:debian-9
 
-# set variables
-# User/Group Id gui app will be executed as default are 99 and 100
-ENV USER_ID=99 GROUP_ID=100 APP_NAME="Mediathekview" WIDTH=1420 HEIGHT=840 TERM=xterm
+ENV USER_ID=0 GROUP_ID=0 TERM=xterm
 
-# Use baseimage-docker's init system
-CMD ["/sbin/my_init"]
+# Define software download URLs.
+ARG MEDIATHEKVIEW_URL=https://download.mediathekview.de/stabil/MediathekView-latest.zip
 
-# Add local files
-ADD src/ /
-# start files and config etc....
-RUN mv /rc.xml /nobody/.config/openbox/rc.xml && \
+# Define working directory.
+WORKDIR /tmp
 
-# repositories
-echo 'deb http://archive.ubuntu.com/ubuntu trusty main universe restricted' > /etc/apt/sources.list && \
-echo 'deb http://archive.ubuntu.com/ubuntu trusty-updates main universe restricted' >> /etc/apt/sources.list && \
-  echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && \
-  add-apt-repository -y ppa:webupd8team/java && \
-  apt-get update
-RUN  apt-get install -y oracle-java8-installer
+# install openjdk creates links in man1...
+RUN mkdir -p /usr/share/man/man1
 
-# update apt and install dependencies
-RUN apt-get install -qy vlc
-# vlc \
-RUN apt-get install -qy flvstreamer
-RUN add-apt-repository -y ppa:mc3man/trusty-media
+# Install dependencies.
 RUN apt-get update
-RUN apt-get -qy dist-upgrade
-RUN apt-get install -qy ffmpeg
-# RUN apt-get install -qy ffmpeg
-RUN apt-get install -qy mplayer
+RUN apt-get upgrade -y
+# Build deps
+RUN apt-get install -y apt-utils unzip
+# Run deps
+RUN \
+    apt-get install -y \
+        wget \
+	openjdk-8-jre \
+	openjfx \
+        ffmpeg \
+        vlc \
+	flvstreamer
 
 # download Mediathekview
-# 
-# wget http://heanet.dl.sourceforge.net/project/zdfmediathk/Mediathek/Mediathek%2011/MediathekView_11.zip -P /opt/ && \
-RUN wget https://download.mediathekview.de/stabil/MediathekView-latest.zip -P /opt/
+RUN mkdir -p /opt/
+RUN wget -q ${MEDIATHEKVIEW_URL} -P /opt/
 RUN unzip /opt/MediathekView-latest.zip -d /opt/
 
-ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
+# Maximize only the main/initial window.
+RUN \
+    sed-patch 's/<application type="normal">/<application type="normal" title="Mediathekview">/' \
+        /etc/xdg/openbox/rc.xml
+
+COPY src/startapp.sh /startapp.sh
+
+# Set environment variables.
+ENV APP_NAME="Mediathekview" \
+    S6_KILL_GRACETIME=8000
+
+# Define mountable directories.
+VOLUME ["/config"]
+VOLUME ["/output"]
+
+# Metadata.
+LABEL \
+      org.label-schema.name="mediathekview" \
+      org.label-schema.description="Docker container for Mediathekview" \
+      org.label-schema.version="unknown" \
+      org.label-schema.vcs-url="https://github.com/csachweh/docker-mediathekview" \
+      org.label-schema.schema-version="1.0"
+
+
+ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64

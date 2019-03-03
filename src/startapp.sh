@@ -1,3 +1,4 @@
-#!/bin/bash
-/opt/MediathekView-13.0.2/MediathekView.sh
+#!/bin/sh
+export HOME=/config
 
+/opt/MediathekView-13.2.1/MediathekView.sh $HOME
