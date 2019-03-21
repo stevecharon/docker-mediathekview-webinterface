@@ -1,3 +1,5 @@
+![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/conrad784/mediathekview-webinterface.svg)
+
 # docker-mediathekview
 X11rdp Version of Mediathekview
 ## About
