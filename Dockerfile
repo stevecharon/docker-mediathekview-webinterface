@@ -3,8 +3,9 @@ FROM jlesage/baseimage-gui:debian-9
 
 ENV UID=0 GID=0 TERM=xterm
 
+ENV MEDIATHEK_VERSION=13.2.1
 # Define software download URLs.
-ARG MEDIATHEKVIEW_URL=https://download.mediathekview.de/stabil/MediathekView-latest.zip
+ARG MEDIATHEKVIEW_URL=https://download.mediathekview.de/stabil/MediathekView-$MEDIATHEK_VERSION.zip
 
 # Define working directory.
 WORKDIR /tmp
@@ -35,8 +36,8 @@ RUN \
 
 # download Mediathekview
 RUN mkdir -p /opt/
-RUN wget -q ${MEDIATHEKVIEW_URL} -P /opt/
-RUN unzip /opt/MediathekView-latest.zip -d /opt/
+RUN wget -q ${MEDIATHEKVIEW_URL} -O /opt/MediathekView.zip
+RUN unzip /opt/MediathekView.zip -d /opt/
 
 # Maximize only the main/initial window.
 RUN \
@@ -58,7 +59,7 @@ LABEL \
       org.label-schema.name="mediathekview" \
       org.label-schema.description="Docker container for Mediathekview" \
       org.label-schema.version="unknown" \
-      org.label-schema.vcs-url="https://github.com/csachweh/docker-mediathekview" \
+      org.label-schema.vcs-url="https://github.com/conrad784/docker-mediathekview-webinterface" \
       org.label-schema.schema-version="1.0"
 
 
