@@ -10,5 +10,5 @@ services:
       - "$HOME/.mediathek3:/config:rw"
       - "$HOME/MediathekView:/output:rw"
     environment:
-       - "UID=1000"
-       - "GID=1000"
+       - "USER_ID=1000"
+       - "GROUP_ID=1000"

@@ -1,7 +1,7 @@
 # Pull base image.
 FROM jlesage/baseimage-gui:debian-9
 
-ENV UID=0 GID=0 TERM=xterm
+ENV USER_ID=0 GROUP_ID=0 TERM=xterm
 
 ENV MEDIATHEK_VERSION=13.2.1
 # Define software download URLs.
