@@ -42,6 +42,10 @@ RUN mkdir -p /opt/MediathekView
 RUN wget -q ${MEDIATHEKVIEW_URL} -O MediathekView.tar.gz
 RUN tar xf MediathekView.tar.gz -C /opt/MediathekView
 
+# Mediathekview 13.3.0 is not runnable as other UID without this hack
+# seems like the $HOME variable is not properly read, so set log file manually in call
+RUN sed -i -e 's/\-Xmx1G/\-Xmx1G\ \-DmvLogOutputPath\=\$HOME\/mediathekview.log/g' /opt/MediathekView/MediathekView.sh
+
 # Maximize only the main/initial window.
 RUN \
     sed-patch 's/<application type="normal">/<application type="normal" title="Mediathekview">/' \
