@@ -23,7 +23,6 @@ ENV LANG en_US.UTF-8
 RUN \
     apt-get install -y \
         wget \
-        ffmpeg \
         vlc \
 	flvstreamer
 
@@ -31,11 +30,20 @@ RUN \
 # Define software download URLs.
 ARG MEDIATHEKVIEW_URL=https://download.mediathekview.de/stabil/MediathekView-$MEDIATHEK_VERSION-linux.tar.gz
 ARG OPENJDK_URL=https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11.0.4%2B11/OpenJDK11U-jdk_x64_linux_hotspot_11.0.4_11.tar.gz
+ARG FFMPEG_URL=https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz
 
 # install openjdk
 RUN wget -q ${OPENJDK_URL}
 RUN tar xf OpenJDK11U-jdk_x64_linux_hotspot_11.0.4_11.tar.gz -C /opt
 ENV JAVA_HOME=/opt/jdk-11.0.4+11
+
+# install ffmpeg
+RUN mkdir -p /opt/ffmpeg
+RUN wget -q ${FFMPEG_URL} -O ffmpeg.tar.xz
+RUN tar xf ffmpeg.tar.xz -C /opt/ffmpeg
+# Mediathekview only searches in /usr/bin for binaries like ffmpeg and vlc...
+RUN ln -s /opt/ffmpeg/ffmpeg-4.2-amd64-static/ffmpeg /usr/bin/
+RUN ln -s /opt/ffmpeg/ffmpeg-4.2-amd64-static/ffprobe /usr/bin/
 
 # download Mediathekview
 RUN mkdir -p /opt/MediathekView
