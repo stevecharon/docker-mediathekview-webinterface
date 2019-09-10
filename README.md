@@ -1,4 +1,5 @@
-![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/conrad784/mediathekview-webinterface.svg)
+[![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/conrad784/mediathekview-webinterface.svg)](https://hub.docker.com/r/conrad784/mediathekview-webinterface)
+[![GitHub-Issues](https://img.shields.io/github/issues/conrad784/docker-mediathekview-webinterface)](https://github.com/conrad784/docker-mediathekview-webinterface/issues)
 
 # docker-mediathekview
 X11rdp Version of Mediathekview
