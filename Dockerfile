@@ -61,6 +61,9 @@ RUN \
 
 COPY src/startapp.sh /startapp.sh
 
+# clear temporary build directory
+RUN rm /tmp/*
+
 # Set environment variables.
 ENV APP_NAME="Mediathekview" \
     S6_KILL_GRACETIME=8000
