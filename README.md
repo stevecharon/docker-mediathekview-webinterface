@@ -35,3 +35,13 @@ docker run -it -p 127.0.0.1:5800:5800 --rm \
     -v <path to your media files>:/output:rw \
     conrad784/mediathekview-webinterface:latest
 ```
+
+## Developing
+Make your changes, then build new version:
+`docker build --rm -t mymediathek -f Dockerfile .`
+
+Run the container with some testing environment:
+`docker run --name mymedia -p 127.0.0.1:5800:5800 --rm -it -e USER_ID=99 -e GROUP_ID=99 -e KEEP_APP_RUNNING=1 -v /tmp/mediathek_config:/config:rw -v /tmp/mediathek_downloads:/output:rw  mymediathek:latest`
+
+attach to running container and debug:
+`docker exec -it mymedia bash`
