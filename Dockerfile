@@ -42,8 +42,8 @@ RUN mkdir -p /opt/ffmpeg
 RUN wget -q ${FFMPEG_URL} -O ffmpeg.tar.xz
 RUN tar xf ffmpeg.tar.xz -C /opt/ffmpeg
 # Mediathekview only searches in /usr/bin for binaries like ffmpeg and vlc...
-RUN ln -s /opt/ffmpeg/ffmpeg-4.2-amd64-static/ffmpeg /usr/bin/
-RUN ln -s /opt/ffmpeg/ffmpeg-4.2-amd64-static/ffprobe /usr/bin/
+RUN ln -s /opt/ffmpeg/ffmpeg-4.2.1-amd64-static/ffmpeg /usr/bin/
+RUN ln -s /opt/ffmpeg/ffmpeg-4.2.1-amd64-static/ffprobe /usr/bin/
 
 # download Mediathekview
 RUN mkdir -p /opt/MediathekView
