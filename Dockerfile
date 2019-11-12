@@ -29,13 +29,7 @@ RUN \
 
 # Define software download URLs.
 ARG MEDIATHEKVIEW_URL=https://download.mediathekview.de/stabil/MediathekView-$MEDIATHEK_VERSION-linux.tar.gz
-ARG OPENJDK_URL=https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11.0.4%2B11/OpenJDK11U-jdk_x64_linux_hotspot_11.0.4_11.tar.gz
 ARG FFMPEG_URL=https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz
-
-# install openjdk
-RUN wget -q ${OPENJDK_URL}
-RUN tar xf OpenJDK11U-jdk_x64_linux_hotspot_11.0.4_11.tar.gz -C /opt
-ENV JAVA_HOME=/opt/jdk-11.0.4+11
 
 # install ffmpeg
 RUN mkdir -p /opt/ffmpeg
