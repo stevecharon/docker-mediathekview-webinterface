@@ -3,7 +3,7 @@ FROM jlesage/baseimage-gui:debian-9
 
 ENV USER_ID=0 GROUP_ID=0 TERM=xterm
 
-ENV MEDIATHEK_VERSION=13.3.0
+ENV MEDIATHEK_VERSION=13.5.0
 
 # Define working directory.
 WORKDIR /tmp
@@ -48,11 +48,7 @@ RUN ln -s /opt/ffmpeg/ffmpeg-4.2.1-amd64-static/ffprobe /usr/bin/
 # download Mediathekview
 RUN mkdir -p /opt/MediathekView
 RUN wget -q ${MEDIATHEKVIEW_URL} -O MediathekView.tar.gz
-RUN tar xf MediathekView.tar.gz -C /opt/MediathekView
-
-# Mediathekview 13.3.0 is not runnable as other UID without this hack
-# seems like the $HOME variable is not properly read, so set log file manually in call
-RUN sed -i -e 's/\-Xmx1G/\-Xmx1G\ \-DmvLogOutputPath\=\$HOME\/mediathekview.log/g' /opt/MediathekView/MediathekView.sh
+RUN tar xf MediathekView.tar.gz -C /opt
 
 # Maximize only the main/initial window.
 RUN \
