@@ -3,7 +3,7 @@ FROM jlesage/baseimage-gui:debian-9
 
 ENV USER_ID=0 GROUP_ID=0 TERM=xterm
 
-ENV MEDIATHEK_VERSION=13.5.1
+ENV MEDIATHEK_VERSION=13.6.0
 
 # Define working directory.
 WORKDIR /tmp
@@ -30,7 +30,7 @@ RUN \
 # Define software download URLs.
 ARG MEDIATHEKVIEW_URL=https://download.mediathekview.de/stabil/MediathekView-$MEDIATHEK_VERSION-linux.tar.gz
 ARG FFMPEG_URL=https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz
-ARG FFMPEG_VERSION=4.2.2
+ARG FFMPEG_VERSION=4.3.1
 
 # install ffmpeg
 RUN mkdir -p /opt/ffmpeg
