@@ -1,6 +1,6 @@
 [![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/conrad784/mediathekview-webinterface.svg)](https://hub.docker.com/r/conrad784/mediathekview-webinterface)
-[![GitHub-Issues](https://img.shields.io/github/issues/conrad784/docker-mediathekview-webinterface)](https://github.com/conrad784/docker-mediathekview-webinterface/issues)
-[![GitHub-Releases](https://img.shields.io/github/tag/conrad784/docker-mediathekview-webinterface.svg)](https://github.com/conrad784/docker-mediathekview-webinterface/releases)
+[![GitHub-Issues](https://img.shields.io/github/issues/stevecharon/docker-mediathekview-webinterface)](https://github.com/stevecharon/docker-mediathekview-webinterface/issues)
+[![GitHub-Releases](https://img.shields.io/github/tag/stevecharon/docker-mediathekview-webinterface.svg)](https://github.com/stevecharon/docker-mediathekview-webinterface/releases)
 
 [![Docker Image CI](https://github.com/stevecharon/docker-mediathekview-webinterface/actions/workflows/docker-image.yml/badge.svg)](https://github.com/stevecharon/docker-mediathekview-webinterface/actions/workflows/docker-image.yml)
 [![DockerPush](https://github.com/stevecharon/docker-mediathekview-webinterface/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/stevecharon/docker-mediathekview-webinterface/actions/workflows/docker-publish.yml)
