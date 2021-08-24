@@ -3,6 +3,7 @@
 [![GitHub-Releases](https://img.shields.io/github/tag/conrad784/docker-mediathekview-webinterface.svg)](https://github.com/conrad784/docker-mediathekview-webinterface/releases)
 
 [![Docker Image CI](https://github.com/stevecharon/docker-mediathekview-webinterface/actions/workflows/docker-image.yml/badge.svg)](https://github.com/stevecharon/docker-mediathekview-webinterface/actions/workflows/docker-image.yml)
+[![DockerPush](https://github.com/stevecharon/docker-mediathekview-webinterface/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/stevecharon/docker-mediathekview-webinterface/actions/workflows/docker-publish.yml)
 # docker-mediathekview
 X11rdp Version of Mediathekview
 ## About
